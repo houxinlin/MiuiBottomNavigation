@@ -18,14 +18,19 @@
 
 ```
 ```java
-  findViewById<BottomNavigationView>(R.id.bottom)
-      .addTab("首页", R.drawable.ic_home)
-      .addTab("娱乐", R.drawable.ic_game)
-      .addTab("我的",R.drawable.ic_me)
-      .setClickListener(object : IItemClickListener {
-          override fun click(index: Int) {
-              Toast.makeText(this@MainActivity, "${index}", Toast.LENGTH_SHORT).show()
-          }
-      })
-      .init(0);
+ findViewById<BottomNavigationView>(R.id.bottom)
+        .setClickListener(object : IItemClickListener {
+        override fun click(index: Int) {
+        }
+        })
+        .init(
+        NavigationBuild.Builder(this)
+        .addItem("首页", R.drawable.ic_home)
+        .addItem("娱乐", R.drawable.ic_game)
+        .addItem("我的", R.drawable.ic_me)
+        .setMode(Mode.MODE_SCROLL)
+        .setSelectTextColor(Color.RED)
+        .setFixedItems(mutableSetOf(1))
+        .build()
+        )
 ```
