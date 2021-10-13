@@ -2,10 +2,9 @@ package com.hxl.kotlindemo
 
 import android.content.Intent
 import android.graphics.Bitmap
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-
-import okhttp3.*
 
 
 import android.os.Build
@@ -15,6 +14,8 @@ import android.widget.*
 import androidx.annotation.RequiresApi
 import com.hxl.miuibottomnavigation.BottomNavigationView
 import com.hxl.miuibottomnavigation.IItemClickListener
+import com.hxl.miuibottomnavigation.Mode
+import com.hxl.miuibottomnavigation.build.NavigationBuild
 
 
 class MainActivity : AppCompatActivity() {
@@ -24,18 +25,23 @@ class MainActivity : AppCompatActivity() {
 
         setContentView(R.layout.activity_main)
 
+
         findViewById<BottomNavigationView>(R.id.bottom)
-            .addTab("首页", R.drawable.ic_home)
-            .addTab("娱乐", R.drawable.ic_game)
-            .addTab("我的",R.drawable.ic_me)
             .setClickListener(object : IItemClickListener {
                 override fun click(index: Int) {
-                    Toast.makeText(this@MainActivity, "${index}", Toast.LENGTH_SHORT).show()
 
                 }
             })
-            .init(0);
-
+            .init(
+                NavigationBuild.Builder(this)
+                    .addItem("首页", R.drawable.ic_home)
+                    .addItem("娱乐", R.drawable.ic_game)
+                    .addItem("我的", R.drawable.ic_me)
+                    .setMode(Mode.MODE_SCROLL)
+                    .setSelectTextColor(Color.RED)
+                    .setFixedItems(mutableSetOf(1))
+                    .build()
+            )
 
     }
 
