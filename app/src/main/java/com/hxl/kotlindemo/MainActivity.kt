@@ -8,6 +8,7 @@ import android.os.Bundle
 
 
 import android.os.Build
+import android.os.Handler
 
 
 import android.widget.*
@@ -43,6 +44,12 @@ class MainActivity : AppCompatActivity() {
                     .build()
             )
 
+        /**
+         * 手动设置位置
+         */
+        Handler().postDelayed({
+            findViewById<BottomNavigationView>(R.id.bottom).setCurrentItem(3)
+        },1000)
     }
 
 

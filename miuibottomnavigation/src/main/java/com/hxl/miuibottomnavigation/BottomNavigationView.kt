@@ -69,6 +69,13 @@ class BottomNavigationView @JvmOverloads constructor(
         return this;
     }
 
+    fun setCurrentItem(index: Int) {
+        if ((index >= navigationBuild.itemList.size) || index < 0) {
+            return
+        }
+        navigationBuild.mode?.clickItem(index)
+    }
+
     fun init(builder: NavigationBuild) {
         this.navigationBuild = builder;
         when (builder.modeValue) {
