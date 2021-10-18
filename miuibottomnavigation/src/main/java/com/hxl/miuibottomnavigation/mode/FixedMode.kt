@@ -9,7 +9,6 @@ import com.hxl.miuibottomnavigation.BottomNavigationView
 
 class FixedMode(bottomNavigationView: BottomNavigationView) : BaseMode(bottomNavigationView) {
     override fun draw(canvas: Canvas) {
-        Log.i("TAG", "draw: ${bottomNavigationView.navigationBuild.fixedItems}")
         for (i in bottomNavigationView.navigationBuild.itemList.indices) {
             if (bottomNavigationView.navigationBuild.fixedItems.contains(i)) {
                 var itemRect = getItemRect(i)

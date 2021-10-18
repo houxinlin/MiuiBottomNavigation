@@ -20,6 +20,7 @@ import android.util.Log
 import com.hxl.miuibottomnavigation.build.NavigationBuild
 import com.hxl.miuibottomnavigation.mode.FixedMode
 import com.hxl.miuibottomnavigation.mode.MIUIMode
+import com.hxl.miuibottomnavigation.mode.NoTitleMode
 import com.hxl.miuibottomnavigation.mode.ScrollMode
 import kotlin.math.*
 
@@ -88,14 +89,15 @@ class BottomNavigationView @JvmOverloads constructor(
             Mode.MODE_FIXED.value -> {
                 navigationBuild.mode = FixedMode(this)
             }
+            Mode.MODE_NO_TITLE.value -> {
+                navigationBuild.mode = NoTitleMode(this)
+            }
         }
         navigationBuild.mode?.init()
-
         post {
             navigationBuild.mode?.clickItem(builder.defaultSelectIndex)
             refresh()
         }
-
     }
 
     class ItemRect(var start: Int, var end: Int, var mid: Int)

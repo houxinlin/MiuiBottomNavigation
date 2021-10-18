@@ -11,7 +11,7 @@ import com.hxl.miuibottomnavigation.BottomNavigationView
 import kotlin.math.abs
 import kotlin.math.min
 
-class MIUIMode(bottomNavigationView: BottomNavigationView) : BaseMode(bottomNavigationView) {
+open class MIUIMode(bottomNavigationView: BottomNavigationView) : BaseMode(bottomNavigationView) {
 
     override fun draw(canvas: Canvas) {
         for (i in bottomNavigationView.navigationBuild.itemList.indices) {

@@ -64,12 +64,19 @@ abstract class BaseMode(var bottomNavigationView: BottomNavigationView) {
     var bezierHeightMap: MutableMap<Int, Float> = mutableMapOf();
 
 
+    /**
+     * 是否绘制标题
+     */
+    var drawTitle: Boolean = true;
     fun isNightMode(resources: Resources): Boolean {
         return (resources.configuration.uiMode and Configuration.UI_MODE_NIGHT_MASK) ==
                 Configuration.UI_MODE_NIGHT_YES
     }
 
     fun drawText(text: String, index: Int, canvas: Canvas) {
+        if (!drawTitle) {
+            return
+        }
         var itemRect = getItemRect(index)
         var paint = Paint()
         paint.textSize = bottomNavigationView.navigationBuild.textSize.toFloat()
@@ -152,6 +159,8 @@ abstract class BaseMode(var bottomNavigationView: BottomNavigationView) {
         }
         handlerClick(index)
     }
+
+
 
     fun init() {
         for (i in bottomNavigationView.navigationBuild.itemList.indices) {

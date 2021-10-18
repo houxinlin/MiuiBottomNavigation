@@ -30,7 +30,6 @@ class MainActivity : AppCompatActivity() {
         findViewById<BottomNavigationView>(R.id.bottom)
             .setClickListener(object : IItemClickListener {
                 override fun click(index: Int) {
-
                 }
             })
             .init(
@@ -38,7 +37,7 @@ class MainActivity : AppCompatActivity() {
                     .addItem("首页", R.drawable.ic_home)
                     .addItem("娱乐", R.drawable.ic_game)
                     .addItem("我的", R.drawable.ic_me)
-                    .setMode(Mode.MODE_SCROLL)
+                    .setMode(Mode.MODE_NO_TITLE)
                     .setSelectTextColor(Color.RED)
                     .setFixedItems(mutableSetOf(1))
                     .build()

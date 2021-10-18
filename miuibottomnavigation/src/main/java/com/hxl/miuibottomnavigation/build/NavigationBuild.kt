@@ -35,11 +35,14 @@ class NavigationBuild {
     class Builder(var context: Context) {
         private var instance = NavigationBuild();
 
+        private fun setDefaultValues() {
+            if (instance.textSize == 0) {
+                instance.textSize = (11).dp2Px(context);
+            }
+        }
 
         fun build(): NavigationBuild {
-            if (instance.textSize == 0) {
-                instance.textSize = (9).dp2Px(context);
-            }
+            setDefaultValues()
             return instance;
         }
 

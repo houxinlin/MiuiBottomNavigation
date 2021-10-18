@@ -37,7 +37,8 @@ class ScrollMode(bottomNavigationView: BottomNavigationView) : BaseMode(bottomNa
         }
     }
 
-    override fun handlerClick(index: Int) {
+    override fun handlerClick
+                (index: Int) {
         if (isPlay) {
             return
         }
