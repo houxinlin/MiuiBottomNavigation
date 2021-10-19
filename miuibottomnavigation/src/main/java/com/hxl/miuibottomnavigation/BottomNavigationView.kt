@@ -17,6 +17,7 @@ import android.graphics.Bitmap
 import android.view.MotionEvent
 import android.content.res.Configuration
 import android.util.Log
+import androidx.viewpager.widget.ViewPager
 import com.hxl.miuibottomnavigation.build.NavigationBuild
 import com.hxl.miuibottomnavigation.mode.FixedMode
 import com.hxl.miuibottomnavigation.mode.MIUIMode
@@ -98,6 +99,20 @@ class BottomNavigationView @JvmOverloads constructor(
             navigationBuild.mode?.clickItem(builder.defaultSelectIndex)
             refresh()
         }
+        navigationBuild.viewPager?.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrolled(
+                position: Int,
+                positionOffset: Float,
+                positionOffsetPixels: Int
+            ) {
+            }
+            override fun onPageSelected(position: Int) {
+                setCurrentItem(position)
+            }
+
+            override fun onPageScrollStateChanged(state: Int) {
+            }
+        })
     }
 
     class ItemRect(var start: Int, var end: Int, var mid: Int)

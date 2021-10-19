@@ -157,9 +157,9 @@ abstract class BaseMode(var bottomNavigationView: BottomNavigationView) {
         if (isPlay) {
             return
         }
+        bottomNavigationView.navigationBuild.viewPager?.currentItem = index
         handlerClick(index)
     }
-
 
 
     fun init() {

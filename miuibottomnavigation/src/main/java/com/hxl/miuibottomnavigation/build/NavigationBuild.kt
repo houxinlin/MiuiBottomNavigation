@@ -3,6 +3,7 @@ package com.hxl.miuibottomnavigation.build
 import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.Color
+import androidx.viewpager.widget.ViewPager
 import com.hxl.miuibottomnavigation.BottomNavigationView
 import com.hxl.miuibottomnavigation.Mode
 import com.hxl.miuibottomnavigation.ViewItem
@@ -31,6 +32,8 @@ class NavigationBuild {
     var textSize = 0;
 
     var fixedItems = mutableSetOf<Int>()
+
+    var viewPager: ViewPager? = null;
 
     class Builder(var context: Context) {
         private var instance = NavigationBuild();
@@ -89,6 +92,11 @@ class NavigationBuild {
         fun setFixedItems(id: Set<Int>): Builder {
             instance.fixedItems.clear()
             instance.fixedItems.addAll(id)
+            return this;
+        }
+
+        fun setupWithViewPager(viewPager: ViewPager): Builder {
+            instance.viewPager = viewPager;
             return this;
         }
 
