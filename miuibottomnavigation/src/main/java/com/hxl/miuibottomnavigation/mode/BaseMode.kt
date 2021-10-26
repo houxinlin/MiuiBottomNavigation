@@ -93,10 +93,11 @@ abstract class BaseMode(var bottomNavigationView: BottomNavigationView) {
     fun drawIcon(bitmap: Bitmap, index: Int, canvas: Canvas) {
         var width = bitmap.width
         var itemRect = getItemRect(index)
+        var top = iconHeightMap[index]!!
         canvas.drawBitmap(
             bitmap,
             (itemRect.mid - width / 2).toFloat(),
-            iconHeightMap[index]!!,
+            top,
             Paint()
         )
     }
@@ -120,6 +121,9 @@ abstract class BaseMode(var bottomNavigationView: BottomNavigationView) {
         if (!isNightMode(bottomNavigationView.resources)) {
             bodyPaint.setShadowLayer(25f, -10f, 2f, Color.parseColor("#BDBFBEBE"));
         }
+        /**
+         * 绘制body
+         */
         canvas.drawRect(
             0f,
             bodyMarginTop,
